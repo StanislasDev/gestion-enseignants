@@ -13,7 +13,6 @@
 <body class="antialiased h-full">
     <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div class="flex justify-center">
-            <a href="">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-9 text-blue-700">
                     <path stroke-linecap="round" stroke-linejoin="round"

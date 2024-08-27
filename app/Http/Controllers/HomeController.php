@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enseignants;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -14,6 +15,9 @@ class HomeController extends Controller
 
     public function index(): View
     {
-        return view('home.index');
+        
+        return view('home.index', [
+            'enseignants' => Enseignants::latest()->get(),
+        ]);
     }
 }
