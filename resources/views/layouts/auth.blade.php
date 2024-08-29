@@ -33,9 +33,22 @@
                     </div>
                 </form>
                 <div class="mt-2 ml-8 flex space-x-3">
+
+                    @if (Route::currentRouteName()=='login')
+                    
+                    <small class="text-gray-500">Vous n'avez pas encore un compte? inscrivez-vous</small>
+                    <ul class="md:flex space-x-12 font-semibold text-sky-500">
+                    <li><a href="{{ route('register') }}">Inscription</a></li>
+                        
+                    @else
+                        
                     <small class="text-gray-500">Vous avez déjà un compte? Connectez-vous</small>
                     <ul class="md:flex space-x-12 font-semibold text-sky-500">
                     <li><a href="{{ route('login') }}">Connexion</a></li>
+
+                    @endif
+                    
+                        
                 </ul>
                 </div>
             </div>
