@@ -46,8 +46,7 @@
                     <div class="col-12 col-md-4">
                         <h3 class="section-title">Plan</h3>
                         <div class="section-intro">
-                            Settings section intro goes here. Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. <a href="help.html">Learn more</a>
+                            Ici ce passe la gestion des séances de chaque enseignant dans chaque spécialité. <a href="{{ route('admin.seances.index') }}">Learn more</a>
                         </div>
                     </div>
                     <div class="col-12 col-md-8">
@@ -59,15 +58,12 @@
                                     <span class="badge bg-success">Active</span>
                                 </div>
                                 <div class="mb-2"><strong>Expires:</strong> 2030-09-24</div>
-                                <div class="mb-4">
-                                    <strong>Invoices:</strong> <a href="#">view</a>
-                                </div>
                                 <div class="row justify-content-between">
                                     <div class="col-auto">
-                                        <a class="btn app-btn-primary" href="#">Upgrade Plan</a>
+                                        <a class="btn app-btn-primary" href="{{ route('admin.seances.create') }}" target="blank">Créer une seance</a>
                                     </div>
                                     <div class="col-auto">
-                                        <a class="btn app-btn-secondary" href="#">Cancel Plan</a>
+                                        <a class="btn app-btn-secondary" href="/">Cancel Plan</a>
                                     </div>
                                 </div>
                             </div>

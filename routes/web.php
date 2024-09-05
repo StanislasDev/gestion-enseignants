@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\ClasseController;
+use App\Http\Controllers\SeanceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -28,3 +28,4 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::resource('/admin/enseignants', EnseignantController::class,)->except('show')->names('admin.enseignants');
 Route::resource('/admin/classes', ClasseController::class,)->except('show')->names('admin.classes');
+Route::resource('/admin/seances', SeanceController::class)->names('admin.seances');

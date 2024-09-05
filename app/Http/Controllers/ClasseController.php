@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Niveau;
 use App\Models\Classes;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class ClasseController extends Controller
 {
@@ -17,9 +18,8 @@ class ClasseController extends Controller
      */
     public function index(): View
     {
-        return view('admin.classes.index', [
-            'classes' => Classes::latest()->get(),
-        ]);
+        $classes = Classes::with('niveau')->get();
+        return view('admin.classes.index', compact('classes'));
     }
 
     /**
@@ -27,7 +27,9 @@ class ClasseController extends Controller
      */
     public function create()
     {
-        return view('admin.classes.form');
+        $specialites = ['Génie Logiciel', 'Génie Matériaux', 'Génie Mécanique', 'Génie Informatique', 'Génie Civil', 'Génie Chimique', 'Génie Electrique', 'Génie Biomédical'];
+        $niveaux = Niveau::all();
+        return view('admin.classes.form', compact('specialites','niveaux'));
     }
 
     /**
@@ -37,7 +39,7 @@ class ClasseController extends Controller
     {
         $request->validate([
             'nom_classe' => 'required|string',
-            'niveau' => 'required|string',
+            'niveau_id' => 'required',
         ]);
 
         Classes::create($request->all());
@@ -57,7 +59,9 @@ class ClasseController extends Controller
      */
     public function edit(Classes $class)
     {
-        return view('admin.classes.edit', compact('class'));
+        $specialites = ['Génie Logiciel', 'Génie Matériaux', 'Génie Mécanique', 'Génie Informatique', 'Génie Civil', 'Génie Chimique', 'Génie Electrique', 'Génie Biomédical'];
+        $niveaux = Niveau::all();
+        return view('admin.classes.edit', compact('specialites', 'class', 'niveaux'));
     }
 
     /**
@@ -67,7 +71,7 @@ class ClasseController extends Controller
     {
         $request->validate([
             'nom_classe' => 'required|string',
-            'niveau' => 'required|string',
+            'niveau_id' => 'required|string',
         ]);
 
         $class->update($request->all());

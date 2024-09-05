@@ -15,4 +15,9 @@ class Enseignants extends Model
         'email',
         'telephone',
     ];
+
+    public function seances()
+    {
+        return $this->hasMany(Seances::class, 'id_enseignant');
+    }
 }

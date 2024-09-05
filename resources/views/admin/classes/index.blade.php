@@ -14,12 +14,12 @@
             </thead>
             <tbody>
                 @foreach($classes as $classe)
-                    <tr>
-                        <td>{{ $classe->id }}</td>
-                        <td>{{ $classe->nom_classe }}</td>
-                        <td>{{ $classe->niveau }}</td>
+                <tr>
+                    <td>{{ $classe->id }}</td>
+                    <td>{{ $classe->nom_classe }}</td>
+                    <td>{{ $classe->niveau->nom }}</td>
                         <td>
-                            <a href="{{ route('admin.classes.edit', $classe->id) }}" class="btn btn-warning">Modifier</a>
+                            <a href="{{ route('admin.classes.edit', $classe->id) }}" class="btn btn-warning" target="blank">Modifier</a>
                             <form x-ref="delete" action="{{ route('admin.classes.destroy', $classe->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')

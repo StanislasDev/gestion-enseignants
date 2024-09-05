@@ -252,7 +252,7 @@
                             </li><!--//nav-item-->
                             <li class="nav-item">
                                 <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                                <a class="nav-link" href="orders.html">
+                                <a class="nav-link" href="{{ route('admin.seances.index') }}">
                                     <span class="nav-icon">
                                         <svg width="1em" height="1em" viewBox="0 0 16 16"
                                             class="bi bi-card-list" fill="currentColor"

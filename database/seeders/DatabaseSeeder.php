@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(
             [
+                NiveauSeeder::class,
                 ClasseSeeder::class,
                 EnseignantSeeder::class,
                 SeanceSeeder::class,
