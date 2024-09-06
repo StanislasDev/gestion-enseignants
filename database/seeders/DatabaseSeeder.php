@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
                 NiveauSeeder::class,
                 ClasseSeeder::class,
                 EnseignantSeeder::class,
+                JourSeeder::class,
                 SeanceSeeder::class,
                 PresenceSeeder::class,
             ]

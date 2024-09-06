@@ -23,6 +23,7 @@ class SeancesFactory extends Factory
             'heure_fin' => fake()->time(),
             'id_classe' => fake()->numberBetween(1, 10),
             'id_enseignant' => Enseignants::factory(),
+            'id_jour' => fake()->numberBetween(1, 6),
 
 
         ];

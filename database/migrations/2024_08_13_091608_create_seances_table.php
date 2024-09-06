@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('seances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_classe')->constrained('classes')->onDelete('cascade');
-            $table->foreignId('id_enseignant')->constrained('enseignants');
+            $table->foreignId('id_jour')->constrained('jours');
+            $table->foreignId('id_enseignant')->constrained('enseignants')->onDelete('cascade');
             $table->date('date');
             $table->time('heure_debut');
             $table->time('heure_fin');
@@ -25,8 +26,11 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
-        Schema::dropIfExists('seances');
-    }
+    public function down()
+{
+    Schema::table('seances', function (Blueprint $table) {
+        $table->dropForeign(['id_jour']);
+        $table->dropColumn('id_jour');
+    });
+}
 };

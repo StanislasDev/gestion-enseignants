@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classes;
+use App\Models\Jour;
 use App\Models\Seances;
 use App\Models\Enseignants;
 use Illuminate\Http\Request;
@@ -14,10 +15,7 @@ class SeanceController extends Controller
      */
     public function index()
     {
-        $seances = Seances::with('classe')->get();
-        $jours = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
-        $heures = ['08h:00', '09h:00', '10h:00', '11h:00', '12:00', '13h:00', '14h:00', '15h:00', '16h:00', '17h:00'];
-        return view('admin.seances.index', compact('seances', 'jours', 'heures'));
+        ;
     }
 
     /**
@@ -27,8 +25,9 @@ class SeanceController extends Controller
     {
         {
             $enseignants = Enseignants::all();
-            $classes = Classes::all();
-            return view('admin.seances.create', compact('enseignants', 'classes'));
+            $classes = Classes::with('niveau')->get();
+            $jours = Jour::all();
+            return view('admin.seances.create', compact('enseignants', 'classes', 'jours'));
         }
     }
 
@@ -40,6 +39,7 @@ class SeanceController extends Controller
         $request->validate([
             'id_enseignant' => 'required',
             'id_classe' => 'required',
+            'id_jour' => 'required',
             'date' => 'required|date',
             'heure_debut' => 'required',
             'heure_fin' => 'required',
