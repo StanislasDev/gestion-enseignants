@@ -1,32 +1,34 @@
 <x-default-layout title="Liste de présences des enseignants">
     <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-xl">
-            <table class="table ">
+
+            <h1 class="flex justify-center text-2xl text-blue-600 py-3">Liste de presences des enseignants</h1>
+            <table class="min-w-full border-collapse border border-gray-200">
         <thead>
-            <tr>
-                <th>Enseignant</th>
-                <th>Sapécialités</th>
-                <th>Séance</th>
-                <th>Date de la séance</th>
-                <th>Date</th>
-                <th>Heure du début de la séance</th>
-                <th>Heure d'arrivée</th>
-                <th>Heure de départ</th>
-                <th>Statut</th>
+            <tr class="bg-gray-100">
+                <th class="border border-gray-300 px-4 py-2 text-left">Enseignant</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Sapécialités</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Séance</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Date de la séance</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Date</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Heure du début de la séance</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Heure d'arrivée</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Heure de départ</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Statut</th>
             </tr>
         </thead>
         <tbody>
             @foreach($presences as $presence)
-                <tr>
-                    <td>{{ $presence->enseignant->nom }} {{ $presence->enseignant->prenom }}</td>
-                    <td>{{ $presence->seance->classe->nom_classe }} ({{ $presence->seance->classe->niveau->nom }})</td>
-                    <td>{{ $presence->seance->titre }}</td>
-                    <td>{{ $presence->seance->date }}</td>
-                    <td>{{ $presence->date }}</td>
-                    <td>{{ $presence->seance->heure_debut }}</td>
-                    <td>{{ $presence->heure_arrivee }}</td>
-                    <td>{{ $presence->heure_depart }}</td>
-                    <td>{{ $presence->statut }}</td>
+                <tr class="hover:bg-gray-50">
+                    <td class="border border-gray-300 px-4 py-2">{{ $presence->enseignant->nom }} {{ $presence->enseignant->prenom }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ $presence->seance->classe->nom_classe }} ({{ $presence->seance->classe->niveau->nom }})</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ $presence->seance->titre }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ $presence->seance->date }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ $presence->date }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ $presence->seance->heure_debut }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ $presence->heure_arrivee }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ $presence->heure_depart }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ $presence->statut }}</td>
                 </tr>
             @endforeach
         </tbody>
