@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Jour;
+use App\Models\Presences;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -39,4 +40,11 @@ class Seances extends Model
     {
         return $this->belongsTo(Enseignants::class, 'id_enseignant');
     }
+
+
+    public function presences()
+    {
+        return $this->hasMany(Presences::class, 'id_seance');
+    }
+
 }

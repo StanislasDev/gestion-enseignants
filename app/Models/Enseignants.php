@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Presences;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Enseignants extends Model
 {
@@ -19,5 +20,10 @@ class Enseignants extends Model
     public function seances()
     {
         return $this->hasMany(Seances::class, 'id_enseignant');
+    }
+
+    public function presences()
+    {
+        return $this->hasMany(Presences::class, 'id_enseignant');
     }
 }

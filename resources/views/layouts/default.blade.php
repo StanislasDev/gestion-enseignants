@@ -266,7 +266,7 @@
                                             <circle cx="3.5" cy="10.5" r=".5" />
                                         </svg>
                                     </span>
-                                    <span class="nav-link-text">Orders</span>
+                                    <span class="nav-link-text">Seances</span>
                                 </a><!--//nav-link-->
                             </li><!--//nav-item-->
                             <li class="nav-item has-submenu">
@@ -349,7 +349,7 @@
 
                             <li class="nav-item">
                                 <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                                <a class="nav-link" href="charts.html">
+                                <a class="nav-link" href="{{ route('admin.presences.index') }}">
                                     <span class="nav-icon">
                                         <svg width="1em" height="1em" viewBox="0 0 16 16"
                                             class="bi bi-bar-chart-line" fill="currentColor"
