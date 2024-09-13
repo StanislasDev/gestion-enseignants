@@ -18,14 +18,13 @@ class SeancesFactory extends Factory
     public function definition(): array
     {
         return [
+            'titre' => fake()->sentence(),
             'date' => fake()->dateTimeBetween('-1 year', '+1 year'),
             'heure_debut' => fake()->time(),
             'heure_fin' => fake()->time(),
             'id_classe' => fake()->numberBetween(1, 10),
             'id_enseignant' => Enseignants::factory(),
             'id_jour' => fake()->numberBetween(1, 6),
-
-
         ];
     }
 }

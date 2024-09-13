@@ -24,7 +24,6 @@ class EnseignantsFactory extends Factory
             'telephone' => fake()->unique()->phoneNumber(),
             'created_at' => $created_at,
             'updated_at' => $created_at,
-
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Niveau;
+use App\Models\Option;
 use App\Models\Seances;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -14,13 +15,24 @@ class Classes extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nom_classe',
+        'name',
+        'option_id',
         'niveau_id',
     ];
+
+    public function option()
+    {
+        return $this->belongsTo(Option::class);
+    }
 
     public function niveau(): BelongsTo
     {
         return $this->belongsTo(Niveau::class);
+    }
+
+    public static function generateClassName($optionName, $niveauName)
+    {
+        return $optionName . "-" . $niveauName;
     }
 
     public function seances(): HasMany

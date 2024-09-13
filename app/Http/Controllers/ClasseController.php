@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Niveau;
+use App\Models\Option;
 use App\Models\Classes;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ClasseController extends Controller
 {
@@ -18,7 +20,9 @@ class ClasseController extends Controller
      */
     public function index(): View
     {
-        $classes = Classes::with('niveau')->get();
+        // $classes = Classes::with('option', 'niveau')->get();
+        // return view('admin.classes.index', compact('classes'));
+        $classes = Classes::with(['option', 'niveau'])->get();
         return view('admin.classes.index', compact('classes'));
     }
 
@@ -27,9 +31,10 @@ class ClasseController extends Controller
      */
     public function create()
     {
-        $specialites = ['Génie Logiciel', 'Génie Matériaux', 'Génie Mécanique', 'Génie Informatique', 'Génie Civil', 'Génie Chimique', 'Génie Electrique', 'Génie Biomédical'];
+        
+        $options = Option::all();
         $niveaux = Niveau::all();
-        return view('admin.classes.form', compact('specialites','niveaux'));
+        return view('admin.classes.form', compact('options','niveaux'));
     }
 
     /**
@@ -38,12 +43,51 @@ class ClasseController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nom_classe' => 'required|string',
-            'niveau_id' => 'required',
+            'name' => 'unique:classes,name',
+            'option_id' => 'required|exists:options,id',
+            'niveau_id' => 'required|exists:niveaux,id',
         ]);
 
-        Classes::create($request->all());
-        return redirect()->route('admin.classes.index')->withStatus('La classe a été ajoutée avec succès');
+        $option = Option::find($request->option_id);
+        $niveau = Niveau::find($request->niveau_id);
+        $className = Classes::generateClassName($option->nom, $niveau->nom);
+
+        Classes::create([
+            'name' => $className,
+            'option_id' => $request->option_id,
+            'niveau_id' => $request->niveau_id,
+        ]);
+
+        return redirect()->route('admin.classes.index')->with('success', 'Classe ajoutée avec succès.');
+        // Validation des données
+    //     $validator = Validator::make($request->all(), [
+    //     'nom_classe' => 'required|string|max:255|unique:classes,nom_classe',
+    //     'niveau_id' => 'required|exists:niveaux,id',
+    // ]);
+
+    // if ($validator->fails()) {
+    //     return response()->json($validator->errors(), 422);
+    // }
+
+    // // Vérifier si la classe existe déjà
+    // $existingClass = Classes::where('nom_classe', $request->nom_classe)
+    //                         ->where('niveau_id', $request->niveau_id)
+    //                         ->first();
+
+    //     if ($existingClass) {
+    //         return response()->json(['message' => 'Cette classe existe déjà.'], 409);
+    //     }
+
+    //     // Créer la classe
+    //     $classe = Classes::create([
+    //     'nom_classe' => $request->nom_classe,
+    //     'niveau_id' => $request->niveau_id,
+    // ]);
+
+    // return response()->json($classe, 201);
+
+        // Classes::create($request->all());
+        // return redirect()->route('admin.classes.index')->withStatus('La classe a été ajoutée avec succès');
     }
 
     /**
@@ -59,9 +103,9 @@ class ClasseController extends Controller
      */
     public function edit(Classes $class)
     {
-        $specialites = ['Génie Logiciel', 'Génie Matériaux', 'Génie Mécanique', 'Génie Informatique', 'Génie Civil', 'Génie Chimique', 'Génie Electrique', 'Génie Biomédical'];
+        $options = Option::all();
         $niveaux = Niveau::all();
-        return view('admin.classes.edit', compact('specialites', 'class', 'niveaux'));
+        return view('admin.classes.edit', compact('options', 'class', 'niveaux'));
     }
 
     /**
@@ -70,11 +114,20 @@ class ClasseController extends Controller
     public function update(Request $request, Classes $class)
     {
         $request->validate([
-            'nom_classe' => 'required|string',
-            'niveau_id' => 'required|string',
+            'name',
+            'option_id' => 'required|exists:options,id',
+            'niveau_id' => 'required|exists:niveaux,id',
         ]);
 
-        $class->update($request->all());
+        $option = Option::find($request->option_id);
+        $niveau = Niveau::find($request->niveau_id);
+        $className = Classes::generateClassName($option->nom, $niveau->nom);
+
+        $class->update([
+            'name' => $className,
+            'option_id' => $request->option_id,
+            'niveau_id' => $request->niveau_id,
+        ]);
         return redirect()->route('admin.classes.index')->withStatus('La classe a été modifiée avec succès');
     }
 

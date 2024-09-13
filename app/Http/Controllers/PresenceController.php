@@ -12,28 +12,25 @@ class PresenceController extends Controller
      */
     public function index()
     {
-        
-                // Récupérer toutes les présences des enseignants
-                $presences = Presences::with(['enseignant', 'seance'])->get();
 
-                foreach($presences as $presence)
-                {
-                    if ($presence->date != $presence->seance->Database) {
-                        $presence->statut = 'absent(e)';
-                    } elseif ($presence->heure_arrivee === null) {
-                        $presence->statut = 'absent(e)';
-                    } elseif ($presence->heure_arrivee == $presence->seance->heure_debut) {
-                        $presence->statut = 'présent(e)';
-                    } else {
-                        $presence->statut = 'retard';
-                    }
-                    
-                }
-        
-                // Retourner la vue avec les données
-                return view('admin.presences.index', compact('presences'));
-            
-        
+        // Récupérer toutes les présences des enseignants
+        $presences = Presences::with(['enseignant', 'seance'])->get();
+
+        foreach ($presences as $presence) {
+            if ($presence->date != $presence->seance->date) {
+                $presence->statut = 'absent(e)';
+            } elseif ($presence->heure_arrivee === null) {
+                $presence->statut = 'absent(e)';
+            } elseif ($presence->heure_arrivee == $presence->seance->heure_debut) {
+                $presence->statut = 'présent(e)';
+            } else {
+                $presence->statut = 'retard';
+            }
+        }
+
+        // Retourner la vue avec les données
+        return view('admin.presences.index', compact('presences'));
+
     }
 
     /**

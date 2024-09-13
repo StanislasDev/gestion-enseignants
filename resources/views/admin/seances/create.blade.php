@@ -5,6 +5,10 @@
                 <form action="{{ route('admin.seances.store') }}" method="POST">
                     @csrf
                     <div class="form-group">
+                        <label for="titre">Titre de la séance</label>
+                        <input type="text" name="titre" id="titre" class="form-control" required>
+                    </div>
+                    <div class="form-group">
                         <label for="id_enseignant">Enseignant</label>
                         <select name="id_enseignant" id="id_enseignant" class="form-control" required>
                             @foreach($enseignants as $enseignant)

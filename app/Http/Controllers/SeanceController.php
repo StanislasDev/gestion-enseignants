@@ -38,6 +38,7 @@ class SeanceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'titre' => 'required|string',
             'id_enseignant' => 'required',
             'id_classe' => 'required',
             'id_jour' => 'required',
@@ -77,6 +78,7 @@ class SeanceController extends Controller
     public function update(Request $request, Seances $seance)
     {
         $request->validate([
+            'titre' => 'required|string',
             'id_enseignant' => 'required',
             'id_classe' => 'required',
             'id_jour' => 'required',

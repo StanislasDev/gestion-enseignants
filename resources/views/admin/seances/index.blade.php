@@ -41,6 +41,7 @@
             <table class="table min-w-full bg-white border border-gray-300">
                 <thead>
                     <tr>
+                        <th class="py-2 px-4 border-b">Titre</th>
                         <th class="py-2 px-4 border-b">Jour</th>
                         <th class="py-2 px-4 border-b">Enseignant</th>
                         <th class="py-2 px-4 border-b">Date</th>
@@ -53,6 +54,7 @@
                 <tbody>
                     @foreach ($seances as $seance)
                         <tr>
+                            <td class="py-2 px-4 border-b">{{ $seance->titre }}</td>
                             <td class="py-2 px-4 border-b">{{ \Carbon\Carbon::parse($seance->date)->format('l') }}</td>
                             <td class="py-2 px-4 border-b">{{ $seance->enseignant->nom }}
                                 {{ $seance->enseignant->prenom }}</td>

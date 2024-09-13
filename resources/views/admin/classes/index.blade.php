@@ -6,8 +6,8 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Nom de la Classe</th>
+                    <th>Options de spécialités</th>
                     <th>Niveau</th>
                     <th>Actions</th>
                 </tr>
@@ -15,15 +15,15 @@
             <tbody>
                 @foreach($classes as $classe)
                 <tr>
-                    <td>{{ $classe->id }}</td>
-                    <td>{{ $classe->nom_classe }}</td>
+                    <td>{{ $classe->name }}</td>
+                    <td>{{ $classe->option->nom }}</td>
                     <td>{{ $classe->niveau->nom }}</td>
                         <td>
                             <a href="{{ route('admin.classes.edit', $classe->id) }}" class="btn btn-warning" target="blank">Modifier</a>
                             <form x-ref="delete" action="{{ route('admin.classes.destroy', $classe->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger" @click.prevent="$ref.delete.submit()" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet enseignant?');">Supprimer</button>
+                                <button type="submit" class="btn btn-danger" @click.prevent="$ref.delete.submit()" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet classe?');">Supprimer</button>
                             </form>
                         </td>
                     </tr>
