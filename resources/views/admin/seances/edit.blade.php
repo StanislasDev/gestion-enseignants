@@ -6,6 +6,10 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group">
+                        <label for="titre">Titre de la séance</label>
+                        <input type="text" value="{{ $seance->titre }}" name="titre" id="titre" class="form-control" required>
+                    </div>
+                    <div class="form-group">
                         <label for="id_enseignant">Enseignant</label>
                         <select name="id_enseignant" id="id_enseignant" class="form-control" required>
                             @foreach($enseignants as $enseignant)
@@ -14,10 +18,10 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="id_classe">Classe</label>
+                        <label for="id_classe">Spécialité</label>
                         <select name="id_classe" id="id_classe" class="form-control" required>
                             @foreach($classes as $classe)
-                                <option value="{{ $classe->id }}" @if($seance->id_classe == $classe->id) selected @endif>{{ $classe->nom_classe }} ({{ $classe->niveau->nom }})</option>
+                                <option value="{{ $classe->id }}" @if($seance->id_classe == $classe->id) selected @endif>{{ $classe->name }}</option>
                             @endforeach
                         </select>
                     </div>

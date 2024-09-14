@@ -13,6 +13,7 @@ class Seances extends Model
     use HasFactory;
 
     protected $fillable = [
+        'titre',
         'id_enseignant',
         'id_classe',
         'id_jour',
@@ -27,11 +28,6 @@ class Seances extends Model
         return $this->belongsTo(Classes::class, 'id_classe');
     }
 
-    public function niveau()
-    {
-        return $this->belongsToThrough(Niveau::class, Classes::class, 'id_niveau', 'id_classe');
-    }
-    
     public function jour()
     {
         return $this->belongsTo(Jour::class, 'id_jour');

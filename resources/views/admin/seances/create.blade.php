@@ -17,10 +17,10 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="id_classe">Classe</label>
+                        <label for="id_classe">Spécialité</label>
                         <select name="id_classe" id="id_classe" class="form-control" required>
                             @foreach($classes as $classe)
-                                <option value="{{ $classe->id }}">{{ $classe->nom_classe }} ({{ $classe->niveau->nom }})</option>
+                                <option value="{{ $classe->id }}">{{ $classe->name }}</option>
                             @endforeach
                         </select>
                     </div>

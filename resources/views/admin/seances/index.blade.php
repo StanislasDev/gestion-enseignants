@@ -42,12 +42,12 @@
                 <thead>
                     <tr>
                         <th class="py-2 px-4 border-b">Titre</th>
-                        <th class="py-2 px-4 border-b">Jour</th>
                         <th class="py-2 px-4 border-b">Enseignant</th>
+                        <th class="py-2 px-4 border-b">Spécialité</th>
+                        <th class="py-2 px-4 border-b">Jour</th>
                         <th class="py-2 px-4 border-b">Date</th>
                         <th class="py-2 px-4 border-b">Heure de début</th>
                         <th class="py-2 px-4 border-b">Heure de fin</th>
-                        <th class="py-2 px-4 border-b">Niveau de Classe</th>
                         <th class="py-2 px-4 border-b">Actions</th>
                     </tr>
                 </thead>
@@ -55,14 +55,13 @@
                     @foreach ($seances as $seance)
                         <tr>
                             <td class="py-2 px-4 border-b">{{ $seance->titre }}</td>
-                            <td class="py-2 px-4 border-b">{{ \Carbon\Carbon::parse($seance->date)->format('l') }}</td>
                             <td class="py-2 px-4 border-b">{{ $seance->enseignant->nom }}
                                 {{ $seance->enseignant->prenom }}</td>
+                                <td class="py-2 px-4 border-b">{{ $seance->classe->name }}</td>
+                            <td class="py-2 px-4 border-b">{{ \Carbon\Carbon::parse($seance->date)->format('l') }}</td>
                             <td class="py-2 px-4 border-b">{{ \Carbon\Carbon::parse($seance->date)->format('d/m/Y') }}</td>
                             <td class="py-2 px-4 border-b">{{ $seance->heure_debut }}</td>
                             <td class="py-2 px-4 border-b">{{ $seance->heure_fin }}</td>
-                            <td class="py-2 px-4 border-b">{{ $seance->classe->nom_classe }}
-                                ({{ $seance->classe->niveau->nom }})</td>
                             <td class="flex py-2 px-4 border-b">
                                 <a href="{{ route('admin.seances.edit', $seance) }}"
                                 class="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400" target="blank">Modifier</a>
