@@ -54,7 +54,7 @@
                 <tbody>
                     @foreach ($seances as $seance)
                         <tr>
-                            <td class="py-2 px-4 border-b">{{ $seance->titre }}</td>
+                            <td class="py-2 px-4 border-b"><a href="{{ route('presence.create', $seance->id) }}">{{ $seance->titre }}</a></td>
                             <td class="py-2 px-4 border-b">{{ $seance->enseignant->nom }}
                                 {{ $seance->enseignant->prenom }}</td>
                                 <td class="py-2 px-4 border-b">{{ $seance->classe->name }}</td>

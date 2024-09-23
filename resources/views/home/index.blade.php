@@ -11,25 +11,141 @@
                         <div class="row g-4 mb-4">
                             @foreach ($enseignants as $enseignants)
                                 <div class="col-6 col-lg-3">
-                                <div class="app-card app-card-stat shadow-sm h-100">
-                                    <div class="app-card-body p-3 p-lg-4">
-                                        <h4 class="stats-type mb-1">{{ $enseignants->prenom }}</h4>
-                                        <div class="stats-figure">{{ $enseignants->nom }}</div>
-                                        <div class="stats-meta text-success">
-                                            <svg width="1em" height="1em" viewBox="0 0 16 16"
-                                                class="bi bi-arrow-up" fill="currentColor"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
-                                            </svg> {{ $enseignants->telephone }}
-                                        </div>
-                                    </div><!--//app-card-body-->
-                                    <a class="app-card-link-mask" href="{{ route('admin.enseignants.edit', $enseignants->id) }}"></a>
-                                </div><!--//app-card-->
-                            </div><!--//col-->
+                                    <div class="app-card app-card-stat shadow-sm h-100">
+                                        <div class="app-card-body p-3 p-lg-4">
+                                            <h4 class="stats-type mb-1">{{ $enseignants->prenom }}</h4>
+                                            <div class="stats-figure">{{ $enseignants->nom }}</div>
+                                            <div class="stats-meta text-success">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                    class="bi bi-arrow-up" fill="currentColor"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+                                                </svg> {{ $enseignants->telephone }}
+                                            </div>
+                                        </div><!--//app-card-body-->
+                                        <a class="app-card-link-mask"
+                                            href="{{ route('admin.enseignants.edit', $enseignants->id) }}"></a>
+                                    </div><!--//app-card-->
+                                </div><!--//col-->
                             @endforeach
                         </div><!--//row-->
-                        {{-- <div class="row g-4 mb-4">
+
+                        <div class="container-fluid py-4">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card my-4">
+                                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                                            <div class="bg-gray-300 shadow-primary border-radius-lg pt-4 pb-3">
+                                                <h6 class="text-white text-capitalize font-bold ps-3">Liste des présences des enseignants</h6>
+                                            </div>
+                                        </div>
+                                        <div class="card-body px-0 pb-2">
+                                            <div class="table-responsive p-0">
+                                                <table class="table align-items-center mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                Enseignant</th>
+                                                            <th
+                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                                Spécialités</th>
+                                                            <th
+                                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                Status</th>
+                                                            <th
+                                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                Date de présences</th>
+                                                            <th class="text-secondary opacity-7"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex px-2 py-1">
+                                                                    <div>
+                                                                        <img src="../assets/img/team-2.jpg"
+                                                                            class="avatar avatar-sm me-3 border-radius-lg"
+                                                                            alt="user1">
+                                                                    </div>
+                                                                    <div
+                                                                        class="d-flex flex-column justify-content-center">
+                                                                        <h6 class="mb-0 text-sm">John Michael</h6>
+                                                                        <p class="text-xs text-secondary mb-0">
+                                                                            john@creative-tim.com</p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p class="text-xs font-weight-bold mb-0">Manager</p>
+                                                                <p class="text-xs text-secondary mb-0">Organization</p>
+                                                            </td>
+                                                            <td class="align-middle text-center text-sm">
+                                                                <span
+                                                                    class="badge badge-sm bg-gradient-success">Online</span>
+                                                            </td>
+                                                            <td class="align-middle text-center">
+                                                                <span
+                                                                    class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                                            </td>
+                                                            <td class="align-middle">
+                                                                <a href="javascript:;"
+                                                                    class="text-secondary font-weight-bold text-xs"
+                                                                    data-toggle="tooltip"
+                                                                    data-original-title="Edit user">
+                                                                    Edit
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <footer class="footer py-4  ">
+                                <div class="container-fluid">
+                                    <div class="row align-items-center justify-content-lg-between">
+                                        <div class="col-lg-6 mb-lg-0 mb-4">
+                                            <div class="copyright text-center text-sm text-muted text-lg-start">
+                                                ©
+                                                <script>
+                                                    document.write(new Date().getFullYear())
+                                                </script>2024,
+                                                made with <i class="fa fa-heart" aria-hidden="true"></i> by
+                                                <a href="https://www.creative-tim.com" class="font-weight-bold"
+                                                    target="_blank">Creative Tim</a>
+                                                for a better web.
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                                                <li class="nav-item">
+                                                    <a href="https://www.creative-tim.com" class="nav-link text-muted"
+                                                        target="_blank">Creative Tim</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="https://www.creative-tim.com/presentation"
+                                                        class="nav-link text-muted" target="_blank">About Us</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="https://www.creative-tim.com/blog"
+                                                        class="nav-link text-muted" target="_blank">Blog</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="https://www.creative-tim.com/license"
+                                                        class="nav-link pe-0 text-muted" target="_blank">License</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                        <div class="row g-4 mb-4">
                             <div class="col-12 col-lg-6">
                                 <div class="app-card app-card-chart h-100 shadow-sm">
                                     <div class="app-card-header p-3">
@@ -89,8 +205,8 @@
                                 </div><!--//app-card-->
                             </div><!--//col-->
 
-                        </div><!--//row--> --}}
-                        {{-- <div class="row g-4 mb-4">
+                        </div><!--//row-->
+                        <div class="row g-4 mb-4">
                             <div class="col-12 col-lg-6">
                                 <div class="app-card app-card-progress-list h-100 shadow-sm">
                                     <div class="app-card-header p-3">
@@ -275,8 +391,8 @@
                                     </div><!--//app-card-body-->
                                 </div><!--//app-card-->
                             </div><!--//col-->
-                        </div><!--//row--> --}}
-                        {{-- <div class="row g-4 mb-4">
+                        </div><!--//row-->
+                        <div class="row g-4 mb-4">
                             <div class="col-12 col-lg-4">
                                 <div class="app-card app-card-basic d-flex flex-column align-items-start shadow-sm">
                                     <div class="app-card-header p-3 border-bottom-0">
@@ -376,7 +492,7 @@
                                     </div><!--//app-card-footer-->
                                 </div><!--//app-card-->
                             </div><!--//col-->
-                        </div><!--//row--> --}}
+                        </div><!--//row-->
 
                     </div><!--//container-fluid-->
                 </div><!--//app-content-->

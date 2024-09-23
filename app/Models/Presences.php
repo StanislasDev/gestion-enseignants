@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Statut;
 use App\Models\Seances;
 use App\Models\Enseignants;
 use Illuminate\Database\Eloquent\Model;
@@ -17,8 +18,14 @@ class Presences extends Model
         'date',
         'heure_arrivee',
         'heure_depart',
-        'statut',
+        'statut_id',
+        
     ];
+
+    public function statut()
+    {
+        return $this->belongsTo(Statut::class, 'id_statut');
+    }
 
     // Relation avec l'enseignant
     public function enseignant()

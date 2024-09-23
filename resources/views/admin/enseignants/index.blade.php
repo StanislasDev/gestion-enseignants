@@ -63,7 +63,7 @@
                                         <a class="btn app-btn-primary" href="{{ route('admin.seances.create') }}" target="blank">Créer une seance</a>
                                     </div>
                                     <div class="col-auto">
-                                        <a class="btn app-btn-secondary" href="/">Cancel Plan</a>
+                                        <a class="btn app-btn-secondary" href="{{ route('home') }}">Cancel Plan</a>
                                     </div>
                                 </div>
                             </div>
@@ -86,45 +86,9 @@
                         <div class="app-card app-card-settings shadow-sm p-4">
                             <div class="app-card-body">
                                 <form class="settings-form">
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="settings-checkbox-1" checked />
-                                        <label class="form-check-label" for="settings-checkbox-1">
-                                            Keep user app activity history
-                                        </label>
-                                    </div>
-                                    <!--//form-check-->
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="settings-checkbox-2" checked />
-                                        <label class="form-check-label" for="settings-checkbox-2">
-                                            Keep user app preferences
-                                        </label>
-                                    </div>
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="settings-checkbox-3" />
-                                        <label class="form-check-label" for="settings-checkbox-3">
-                                            Keep user app search history
-                                        </label>
-                                    </div>
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="settings-checkbox-4" />
-                                        <label class="form-check-label" for="settings-checkbox-4">
-                                            Lorem ipsum dolor sit amet
-                                        </label>
-                                    </div>
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="settings-checkbox-5" />
-                                        <label class="form-check-label" for="settings-checkbox-5">
-                                            Aenean quis pharetra metus
-                                        </label>
-                                    </div>
                                     <div class="mt-3">
                                         <button type="submit" class="btn app-btn-primary">
-                                            Save Changes
+                                            <a href="{{ route('admin.presences.create') }}">Créer une présences</a>
                                         </button>
                                     </div>
                                 </form>

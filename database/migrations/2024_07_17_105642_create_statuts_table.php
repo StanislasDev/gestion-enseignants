@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('options', function (Blueprint $table) {
+        Schema::create('statuts', function (Blueprint $table) {
             $table->id();
-            $table->string('nom'); // Nom de l'option (ex: Mathématiques, Physique, etc.)
-            $table->string('slug')->unique(); // Slug pour les URL
+            $table->string('nom');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('options');
+        Schema::dropIfExists('statuts');
     }
 };
