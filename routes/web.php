@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClasseController;
@@ -41,3 +42,5 @@ Route::get('/seance/{id}/presence/{presence_id}/edit', [PresencesController::cla
 Route::put('/seance/{id}/presence/{presence_id}', [PresencesController::class, 'update'])->name('presence.update');
 
 Route::delete('/seance/{id}/presence/{presence_id}', [PresencesController::class, 'destroy'])->name('presence.destroy');
+
+Route::get('settings', [SettingController::class, 'index'])->name('settings.index');

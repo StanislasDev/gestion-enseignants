@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Enseignants;
+use App\Models\Presences;
 use Illuminate\View\View;
+use App\Models\Enseignants;
 
 class HomeController extends Controller
 {
@@ -14,9 +15,9 @@ class HomeController extends Controller
 
     public function index(): View
     {
-        
         return view('home.index', [
             'enseignants' => Enseignants::latest()->get(),
+            'presences' => Presences::latest()->paginate(10),
         ]);
     }
 }

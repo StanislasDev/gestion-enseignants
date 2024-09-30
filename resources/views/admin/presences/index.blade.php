@@ -6,9 +6,9 @@
             <table class="min-w-full border-collapse border border-gray-200">
         <thead>
             <tr class="bg-gray-100">
-                <th class="border border-gray-300 px-4 py-2 text-left">Enseignant</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Enseignants</th>
                 <th class="border border-gray-300 px-4 py-2 text-left">Sapécialités</th>
-                <th class="border border-gray-300 px-4 py-2 text-left">Séance</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Séances</th>
                 <th class="border border-gray-300 px-4 py-2 text-left">Date de la séance</th>
                 <th class="border border-gray-300 px-4 py-2 text-left">Date</th>
                 <th class="border border-gray-300 px-4 py-2 text-left">Heure du début de la séance</th>
@@ -35,6 +35,8 @@
                 </tr>
             @endforeach
         </tbody>
+        <!-- Afficher les liens de pagination -->
+        {{ $presences->links() }}
     </table>
         </div>
     </div>

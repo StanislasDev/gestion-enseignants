@@ -50,7 +50,7 @@
                                                                 Enseignant</th>
                                                             <th
                                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                                Spécialités</th>
+                                                                Séances</th>
                                                             <th
                                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                                 Status</th>
@@ -61,36 +61,37 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach($presences as $presence)
                                                         <tr>
                                                             <td>
                                                                 <div class="d-flex px-2 py-1">
                                                                     <div>
                                                                         <img src="../assets/img/team-2.jpg"
-                                                                            class="avatar avatar-sm me-3 border-radius-lg"
-                                                                            alt="user1">
+                                                                        class="avatar avatar-sm me-3 border-radius-lg"
+                                                                        alt="user">
                                                                     </div>
                                                                     <div
                                                                         class="d-flex flex-column justify-content-center">
-                                                                        <h6 class="mb-0 text-sm">John Michael</h6>
+                                                                        <h6 class="mb-0 text-sm">{{ $presence->enseignant->nom }} {{ $presence->enseignant->prenom }}</h6>
                                                                         <p class="text-xs text-secondary mb-0">
-                                                                            john@creative-tim.com</p>
+                                                                            {{ $presence->enseignant->email }}</p>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <p class="text-xs font-weight-bold mb-0">Manager</p>
-                                                                <p class="text-xs text-secondary mb-0">Organization</p>
+                                                                <p class="text-xs font-weight-bold mb-0">{{ $presence->seance->titre }}</p>
+                                                                <p class="text-xs text-secondary mb-0">{{ $presence->seance->classe->name }}</p>
                                                             </td>
                                                             <td class="align-middle text-center text-sm">
                                                                 <span
-                                                                    class="badge badge-sm bg-gradient-success">Online</span>
+                                                                    class="badge-sm bg-gradient-success">{{ $presence->statut->nom }}</span>
                                                             </td>
                                                             <td class="align-middle text-center">
                                                                 <span
-                                                                    class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                                                    class="text-secondary text-xs font-weight-bold">{{ $presence->date }}</span>
                                                             </td>
                                                             <td class="align-middle">
-                                                                <a href="javascript:;"
+                                                                <a href="{{ route('presence.edit', ['id' => $presence->seance->id, 'presence_id' => $presence->id]) }}"
                                                                     class="text-secondary font-weight-bold text-xs"
                                                                     data-toggle="tooltip"
                                                                     data-original-title="Edit user">
@@ -98,64 +99,28 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
+                                                            @endforeach
                                                     </tbody>
                                                 </table>
+                                                <!-- Afficher les liens de pagination -->
+                                                {{ $presences->links() }}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <footer class="footer py-4  ">
-                                <div class="container-fluid">
-                                    <div class="row align-items-center justify-content-lg-between">
-                                        <div class="col-lg-6 mb-lg-0 mb-4">
-                                            <div class="copyright text-center text-sm text-muted text-lg-start">
-                                                ©
-                                                <script>
-                                                    document.write(new Date().getFullYear())
-                                                </script>2024,
-                                                made with <i class="fa fa-heart" aria-hidden="true"></i> by
-                                                <a href="https://www.creative-tim.com" class="font-weight-bold"
-                                                    target="_blank">Creative Tim</a>
-                                                for a better web.
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                                                <li class="nav-item">
-                                                    <a href="https://www.creative-tim.com" class="nav-link text-muted"
-                                                        target="_blank">Creative Tim</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="https://www.creative-tim.com/presentation"
-                                                        class="nav-link text-muted" target="_blank">About Us</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="https://www.creative-tim.com/blog"
-                                                        class="nav-link text-muted" target="_blank">Blog</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="https://www.creative-tim.com/license"
-                                                        class="nav-link pe-0 text-muted" target="_blank">License</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </footer>
                         </div>
                         <div class="row g-4 mb-4">
                             <div class="col-12 col-lg-6">
                                 <div class="app-card app-card-chart h-100 shadow-sm">
                                     <div class="app-card-header p-3">
-                                        <div class="row justify-content-between align-items-center">
+                                        <div class="row justify-between items-center">
                                             <div class="col-auto">
                                                 <h4 class="app-card-title">Line Chart Example</h4>
                                             </div><!--//col-->
                                             <div class="col-auto">
                                                 <div class="card-header-action">
-                                                    <a href="charts.html">More charts</a>
+                                                    <a href="{{ route('presence.index') }}">More charts</a>
                                                 </div><!--//card-header-actions-->
                                             </div><!--//col-->
                                         </div><!--//row-->

@@ -17,7 +17,7 @@ class PresencesController extends Controller
     {
 
         // Récupérer toutes les présences des enseignants
-        $presences = Presences::with(['enseignant', 'seance'])->get();
+        $presences = Presences::with(['enseignant', 'seance'])->paginate(10);
 
         // Retourner la vue avec les données
         return view('admin.presences.index', compact('presences'));
