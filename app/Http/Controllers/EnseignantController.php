@@ -32,6 +32,10 @@ class EnseignantController extends Controller
     /**
      * Display the specified resource.
      */
+    public function show(Enseignants $enseignant)
+    {
+        return view('admin.enseignants.show', compact('enseignant'));
+    }
 
     /**
      * Show the form for editing the specified resource.

@@ -25,7 +25,7 @@
                                             </div>
                                         </div><!--//app-card-body-->
                                         <a class="app-card-link-mask"
-                                            href="{{ route('admin.enseignants.edit', $enseignants->id) }}"></a>
+                                            href="{{ route('admin.enseignants.show', $enseignants->id) }}"></a>
                                     </div><!--//app-card-->
                                 </div><!--//col-->
                             @endforeach
@@ -47,13 +47,16 @@
                                                         <tr>
                                                             <th
                                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                                Enseignant</th>
+                                                                Enseignants</th>
                                                             <th
                                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                                 Séances</th>
                                                             <th
                                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                                 Status</th>
+                                                            <th
+                                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                Motifs</th>
                                                             <th
                                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                                 Date de présences</th>
@@ -66,9 +69,10 @@
                                                             <td>
                                                                 <div class="d-flex px-2 py-1">
                                                                     <div>
-                                                                        <img src="../assets/img/team-2.jpg"
-                                                                        class="avatar avatar-sm me-3 border-radius-lg"
-                                                                        alt="user">
+                                                                        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person avatar avatar-sm me-3 border-radius-lg" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z">
+                                                                            </path>
+                                                                        </svg>
                                                                     </div>
                                                                     <div
                                                                         class="d-flex flex-column justify-content-center">
@@ -85,6 +89,10 @@
                                                             <td class="align-middle text-center text-sm">
                                                                 <span
                                                                     class="badge-sm bg-gradient-success">{{ $presence->statut->nom }}</span>
+                                                            </td>
+                                                            <td class="align-middle text-center text-sm">
+                                                                <span
+                                                                    class="badge-sm bg-gradient-success">{{ $presence->motif }}</span>
                                                             </td>
                                                             <td class="align-middle text-center">
                                                                 <span

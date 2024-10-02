@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -25,10 +26,11 @@ Route::get('/', [RegisterController::class, 'showRegisterForm'])->name('register
 Route::post('/', [RegisterController::class, 'register']);
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
+Route::get('/account', [AccountController::class, 'index'])->name('account.index')->middleware('auth');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::resource('/admin/enseignants', EnseignantController::class,)->except('show')->names('admin.enseignants');
+Route::resource('/admin/enseignants', EnseignantController::class,)->names('admin.enseignants');
 Route::resource('/admin/classes', ClasseController::class,)->except('show')->names('admin.classes');
 Route::resource('/admin/seances', SeanceController::class)->names('admin.seances');
 
