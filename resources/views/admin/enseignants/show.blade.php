@@ -59,7 +59,7 @@
                     <div class="row justify-content-center align-items-center">
                         <div class="col-auto">
                             <div class="item-label"><strong>Website</strong></div>
-                            <div class="item-data">
+                            <div class="item-data cursor-pointer">
                                 https://{{ $enseignant->nom }}website.com
                             </div>
                         </div><!--//col-->
@@ -76,6 +76,8 @@
             </div><!--//app-card-body-->
             <div class="app-card-footer p-4 mt-auto">
                 <a class="btn app-btn-secondary" href="{{ route('admin.enseignants.edit', $enseignant->id) }}">Manage Profile</a>
+                &nbsp;&nbsp;
+                <a class="btn app-btn-secondary" href="{{ route('enseignant.presences', $enseignant->id) }}">Voir les présences</a>
             </div><!--//app-card-footer-->
         </div><!--//app-card-->
     </div><!--//col-->

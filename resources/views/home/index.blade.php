@@ -178,7 +178,7 @@
                                 </div><!--//app-card-->
                             </div><!--//col-->
 
-                        </div><!--//row-->
+                        {{-- </div><!--//row-->
                         <div class="row g-4 mb-4">
                             <div class="col-12 col-lg-6">
                                 <div class="app-card app-card-progress-list h-100 shadow-sm">
@@ -364,7 +364,7 @@
                                     </div><!--//app-card-body-->
                                 </div><!--//app-card-->
                             </div><!--//col-->
-                        </div><!--//row-->
+                        </div><!--//row--> --}}
                         <div class="row g-4 mb-4">
                             <div class="col-12 col-lg-4">
                                 <div class="app-card app-card-basic d-flex flex-column align-items-start shadow-sm">

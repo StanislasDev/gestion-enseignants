@@ -1,7 +1,8 @@
 <x-default-layout title="Modifier la présence pour la séance : {{ $seance->titre }}">
-    <div class="container">
-        <h1>Modifier la présence pour la séance : {{ $seance->titre }}</h1>
-        <h2>pour la spécialité : {{ $seance->classe->name }}</h2>
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+        <h1 class="flex justify-center text-xl text-blue-400 ">Modifier la présence pour la séance :  &nbsp; <div class="text-black font-bold">{{ $seance->titre }} </div></h1>
+        <h2 class="font-bold">pour la spécialité : {{ $seance->classe->name }}</h2>
         <form action="{{ route('presence.update', ['id' => $seance->id, 'presence_id' => $presence->id]) }}" method="POST">
             @csrf
             @method('PUT')

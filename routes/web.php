@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\HelpController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -43,6 +44,11 @@ Route::post('/seance/{id}/presence', [PresencesController::class, 'store'])->nam
 Route::get('/seance/{id}/presence/{presence_id}/edit', [PresencesController::class, 'edit'])->name('presence.edit');
 Route::put('/seance/{id}/presence/{presence_id}', [PresencesController::class, 'update'])->name('presence.update');
 
+Route::get('/enseignant/{id}/presences', [PresencesController::class, 'showPresencesByTeacher'])->name('enseignant.presences');
+Route::get('/ensignant/{id}/presences', [PresencesController::class, 'showCard'])->name('enseignant.card');
+
 Route::delete('/seance/{id}/presence/{presence_id}', [PresencesController::class, 'destroy'])->name('presence.destroy');
 
 Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+
+Route::get('help', [HelpController::class, 'index'])->name('help.index');

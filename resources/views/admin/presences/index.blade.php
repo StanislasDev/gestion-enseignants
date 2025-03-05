@@ -7,7 +7,7 @@
         <thead>
             <tr class="bg-gray-100">
                 <th class="border border-gray-300 px-4 py-2 text-left">Enseignants</th>
-                <th class="border border-gray-300 px-4 py-2 text-left">Sapécialités</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Spécialités</th>
                 <th class="border border-gray-300 px-4 py-2 text-left">Séances</th>
                 <th class="border border-gray-300 px-4 py-2 text-left">Date de la séance</th>
                 <th class="border border-gray-300 px-4 py-2 text-left">Date</th>

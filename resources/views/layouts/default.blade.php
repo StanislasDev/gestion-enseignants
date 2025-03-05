@@ -10,13 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('assets/images/ESCa-final-usa-fond-noir-1-1024x753.ico') }}">
 
-    <!-- FontAwesome JS-->
+    <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- FontAwesome JS -->
     <script defer src="{{ asset('assets/plugins/fontawesome/js/all.min.js') }}"></script>
 
     <!-- App CSS -->
     <link id="theme-style" rel="stylesheet" href="{{ asset('assets/css/portal.css') }}">
+
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -221,7 +224,7 @@
                         <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                             <li class="nav-item">
                                 <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                                <a class="nav-link active" href="{{ route('home') }}">
+                                <a class="nav-link " href="{{ route('home') }}">
                                     <span class="nav-icon">
                                         <svg width="1em" height="1em" viewBox="0 0 16 16"
                                             class="bi bi-house-door" fill="currentColor"
@@ -340,7 +343,7 @@
 
                             <li class="nav-item">
                                 <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                                <a class="nav-link" href="help.html">
+                                <a class="nav-link" href="{{ route('help.index') }}">
                                     <span class="nav-icon">
                                         <svg width="1em" height="1em" viewBox="0 0 16 16"
                                             class="bi bi-question-circle" fill="currentColor"
@@ -392,23 +395,6 @@
                                         <span class="nav-link-text">Download</span>
                                     </a><!--//nav-link-->
                                 </li><!--//nav-item-->
-                                <li class="nav-item">
-                                    <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                                    <a class="nav-link"
-                                        href="https://themes.3rdwavemedia.com/bootstrap-templates/admin-dashboard/portal-free-bootstrap-admin-dashboard-template-for-developers/">
-                                        <span class="nav-icon">
-                                            <svg width="1em" height="1em" viewBox="0 0 16 16"
-                                                class="bi bi-file-person" fill="currentColor"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M12 1H4a1 1 0 0 0-1 1v10.755S4 11 8 11s5 1.755 5 1.755V2a1 1 0 0 0-1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z" />
-                                                <path fill-rule="evenodd" d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                                            </svg>
-                                        </span>
-                                        <span class="nav-link-text">License</span>
-                                    </a><!--//nav-link-->
-                                </li><!--//nav-item-->
-                            </ul><!--//footer-menu-->
                         </nav>
                     </div><!--//app-sidepanel-footer-->
 

@@ -46,7 +46,7 @@
                     <div class="col-12 col-md-4">
                         <h3 class="section-title">Plan</h3>
                         <div class="section-intro">
-                            Ici ce passe la gestion des séances de chaque enseignant dans chaque spécialité. <a href="{{ route('admin.seances.index') }}">Learn more</a>
+                            Ici ce passe la gestion des séances de chaque enseignant dans chaque spécialité. <a class="underline font-bold hover:text-red-300" href="{{ route('admin.seances.index') }}">voir plus</a>
                         </div>
                     </div>
                     <div class="col-12 col-md-8">

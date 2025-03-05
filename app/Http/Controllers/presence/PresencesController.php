@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\presence;
 
+use App\Models\Enseignants;
 use App\Models\Statut;
 use App\Models\Seances;
 use App\Models\Presences;
@@ -120,5 +121,45 @@ class PresencesController extends Controller
             ->with('success', 'Présence mise à jour avec succès');
 
     }
+
+    public function showPresencesByTeacher($id)
+    {
+        // Récupérer l'enseignant par son nom
+        $enseignant = Enseignants::findOrFail($id);
+
+        // Récupérer les présences de cet enseignant
+        $presences = Presences::where('id_enseignant', $id)->with(['seance.classe'])->paginate(10);
+
+        return view('admin.presences.show_by_teacher', compact('enseignant', 'presences'));
+    }
+
+    public function showCard($enseignant_id)
+    {
+        // Récupérer l'enseignant
+        $enseignant = Enseignants::findOrFail($enseignant_id);
+
+        // Récupérer le mois en cours
+        $moisEnCours = now()->month;
+        $anneeEnCours = now()->year;
+
+        // Générer un tableau des jours du mois
+        $joursDuMois = collect();
+        $nombreDeJours = \Carbon\Carbon::now()->daysInMonth;
+
+        for ($i = 1; $i <= $nombreDeJours; $i++) {
+            $joursDuMois->push(\Carbon\Carbon::create($anneeEnCours, $moisEnCours, $i));
+        }
+
+        // Récupérer les présences de l'enseignant durant ce mois
+        $presences = Presences::where('id_enseignant', $enseignant_id)
+                            ->whereMonth('date', $moisEnCours)
+                            ->whereYear('date', $anneeEnCours)
+                            ->with('seance', 'statut')
+                            ->get();
+
+        // Retourner la vue avec les données
+        return view('admin.presences.show_card', compact('enseignant', 'presences', 'joursDuMois'));
+    }
+
 
 }

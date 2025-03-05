@@ -19,6 +19,7 @@ class Presences extends Model
         'heure_arrivee',
         'heure_depart',
         'statut_id',
+        'motif',
         
     ];
 

@@ -1,7 +1,8 @@
 <x-default-layout title="Créer une présence pour la séance : {{ $seance->titre }}">
-    <div class="container">
-        <h1>Créer une présence pour la séance : {{ $seance->titre }}</h1>
-        <h2>pour la spécialité : {{ $seance->classe->name }}</h2>
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+        <h1 class="flex justify-center text-xl text-blue-400 ">Créer une présence pour la séance : &nbsp; <div class="text-black font-bold"> {{ $seance->titre }}</div></h1>
+        &nbsp; <h2 class="font-bold">pour la spécialité : {{ $seance->classe->name }}</h2>
         <form action="{{ route('presence.store', $seance->id) }}" method="POST">
             @csrf
 
@@ -79,6 +80,7 @@
 
             <button type="submit" class="btn btn-primary">Enregistrer</button>
         </form>
+        </div>
     </div>
 
     <script>
